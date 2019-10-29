@@ -2,6 +2,6 @@
 
 * [Introduction to ReactJ](README.md)
 * [Project creation](project-creation.md)
-* [Run and... Hello world!](running-and-customizing-our-development-environment.md)
+* [Run and... Hello world!](hello-world.md)
 * [References](references.md)
 

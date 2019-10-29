@@ -20,7 +20,7 @@ And depends in the version and the date you are looking this guide, your app run
 If your phone is connected in the same network \(wifi\), you could watch your app from your phone entering your local ip, in my case [http://192.168.0.10:3000/](http://192.168.0.10:3000/)
 {% endhint %}
 
-### Hello world, I'm &lt;name&gt;
+## Hello world, I'm &lt;name&gt;
 
 Now lets try something...
 
