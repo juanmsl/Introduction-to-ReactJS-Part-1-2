@@ -28,9 +28,9 @@ When the command finish to create your App, as the image above, we gonna see the
 
 ## App file structure
 
-![](.gitbook/assets/captura-de-pantalla-2019-10-28-a-la-s-9.12.47-p.-m..png)
+![App folder structure](.gitbook/assets/captura-de-pantalla-2019-10-28-a-la-s-9.12.47-p.-m..png)
 
-File README.md
+> I'll describe the most relevant files that you should known by the moment.
 
 {% tabs %}
 {% tab title="Root files" %}
@@ -46,13 +46,25 @@ Generate an specific gitignore file [here](https://www.gitignore.io/).
 
 Basic README file for git, to help people how can them use your repository.
 
+{% hint style="info" %}
+Know more about **`README.md`** file and generate your own [here](https://www.makeareadme.com/).
+{% endhint %}
+
 ### package.json
 
 Common js package file which describes your project dependencies and configuration
 
+{% hint style="info" %}
+Know more about the **`package.json`** file [here](https://docs.npmjs.com/files/package.json).
+{% endhint %}
+
 ### yarn.lock
 
 Lock file to registry the dependency tree of your dependencies
+
+{% hint style="info" %}
+Know more about the **`yarn.lock`** file [here](https://yarnpkg.com/lang/en/docs/yarn-lock/).
+{% endhint %}
 {% endtab %}
 
 {% tab title=".git" %}
@@ -65,6 +77,10 @@ git init
 
 {% tab title="node\_modules" %}
 Folder where your dependencies will be stored, _**\(this folder should not be versioned with git, since it can be generated automatically with the `package.json` file\)**_.
+
+{% hint style="info" %}
+Know more about **`node_modules`** folder [here](https://docs.npmjs.com/files/folders.html#node-modules).
+{% endhint %}
 {% endtab %}
 
 {% tab title="public" %}
@@ -92,7 +108,19 @@ A robots.txt file tells search engine crawlers which pages or files the crawler 
 {% endtab %}
 
 {% tab title="src" %}
+Where you can found your dynamic files, if the file is imported by your JavaScript application or changes contents, put it here.
 
+### index.js
+
+Entry point of your app, where everything you import here will be used and rendered to your app.
+
+### serviceWorker.js
+
+A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction.
+
+{% hint style="info" %}
+Know more about service workers [here](https://developers.google.com/web/fundamentals/primers/service-workers/).
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
