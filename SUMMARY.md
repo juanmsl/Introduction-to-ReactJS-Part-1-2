@@ -1,4 +1,6 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [Introduction to ReactJ](README.md)
+* [Project creation](project-creation.md)
+* [References](references.md)
 
