@@ -95,5 +95,100 @@ Okey... Okey... but... **¿Its that HTML is Javascript?**
 
 With JSX React join the structure _**HTML**_, and the behavior _**Javascript**_, into one! And to use it, you only have to import **`react`** library.
 
+You can declare variables that have **`JSX`** as value, as the example above in the **`line 1`**. Or you can declare functions that receive parameters and returns a **`JSX`** element. So create components using **`JSX`** its to easy.
+
+## How can I create a component?
+
+You create a component in declaring it in a function, or a class
+
+{% code-tabs %}
+{% code-tabs-item title="src/button/index.js" %}
+```javascript
+import React from 'react';
+
+const Button = () => (
+    <a href="https://en.reactjs.org/"
+       className="button link"
+    >
+        Learn ReactJS
+    </a>
+);
+
+export default Button;
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="src/index.js" %}
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from './button';
+
+ReactDOM.render(
+  <Button />,
+  document.getElementById('root')
+);
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Yeah, that its great, but if I want a dynamic button?
+
+You use the props of the component, the props are the properties that you pass to the component  when you use it, as similar as attributes in an HTML tag. And the component receive that properties as a dictionary.
+
+{% code-tabs %}
+{% code-tabs-item title="src/button/index.js" %}
+```javascript
+import React from 'react';
+
+const Button = (props) => (
+    <a href={props.url}
+       className={`button ${props.className}`}
+    >
+        {props.content}
+    </a>
+);
+
+export default Button;
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="src/index.js" %}
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from './button';
+
+const content = (
+  <section>
+    <Button
+      url="https://en.reactjs.org/"
+      className="link"
+      content="Learn ReactJS"
+    />
+    <Button
+      url="https://en.reactjs.org/tutorial/tutorial.html"
+      className="link"
+      content="Tutorial: Intro to React"
+    />
+  </section>
+);
+
+ReactDOM.render(
+  content,
+  document.getElementById('root')
+);
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+In the example above, we create two different buttons, with the same component. So you can define props for your component to receive data that you want to show.
+
+## Components lifecycle and features
+
+## Babel
+
+
+
 
 
