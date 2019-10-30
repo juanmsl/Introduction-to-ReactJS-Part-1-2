@@ -34,7 +34,7 @@ When the command finish to create your App, as the image above, we gonna see the
 
 {% tabs %}
 {% tab title="Root files" %}
-### .gitignore
+#### .gitignore
 
 Git ignore file, to avoid versioning files and paths as **`node_modules`** for example.
 
@@ -42,7 +42,7 @@ Git ignore file, to avoid versioning files and paths as **`node_modules`** for e
 Generate an specific gitignore file [here](https://www.gitignore.io/).
 {% endhint %}
 
-### README.md
+#### README.md
 
 Basic README file for git, to help people how can them use your repository.
 
@@ -50,7 +50,7 @@ Basic README file for git, to help people how can them use your repository.
 Know more about **`README.md`** file and generate your own [here](https://www.makeareadme.com/).
 {% endhint %}
 
-### package.json
+#### package.json
 
 Common js package file which describes your project dependencies and configuration
 
@@ -58,7 +58,7 @@ Common js package file which describes your project dependencies and configurati
 Know more about the **`package.json`** file [here](https://docs.npmjs.com/files/package.json).
 {% endhint %}
 
-### yarn.lock
+#### yarn.lock
 
 Lock file to registry the dependency tree of your dependencies
 
@@ -86,11 +86,11 @@ Know more about **`node_modules`** folder [here](https://docs.npmjs.com/files/fo
 {% tab title="public" %}
 Folder where you can found your static files
 
-### index.html
+#### index.html
 
 Main **`html`** file that server will return to the client, when they request for your webpage.
 
-### manifest.json
+#### manifest.json
 
 The web app manifest is a simple JSON file that tells the browser about your web application and how it should behave when 'installed' on the user's mobile device or desktop. Having a manifest is required by Chrome to show the Add to Home Screen prompt.
 
@@ -98,7 +98,7 @@ The web app manifest is a simple JSON file that tells the browser about your web
 [Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest)
 {% endhint %}
 
-### robots.txt
+#### robots.txt
 
 A robots.txt file tells search engine crawlers which pages or files the crawler can or can't request from your site. This is used mainly to avoid overloading your site with requests**.**
 
@@ -110,11 +110,11 @@ A robots.txt file tells search engine crawlers which pages or files the crawler 
 {% tab title="src" %}
 Where you can found your dynamic files, if the file is imported by your JavaScript application or changes contents, put it here.
 
-### index.js
+#### index.js
 
 Entry point of your app, where everything you import here will be used and rendered to your app.
 
-### serviceWorker.js
+#### serviceWorker.js
 
 A service worker is a script that your browser runs in the background, separate from a web page, opening the door to features that don't need a web page or user interaction.
 
