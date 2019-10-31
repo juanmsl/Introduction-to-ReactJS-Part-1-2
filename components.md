@@ -372,7 +372,9 @@ export { default as TaskList } from './taskList';
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-Now to test, in lines 10-13
+## See the result
+
+Now to test, in **`lines 10-13`**
 
 `src`**`>`**`modules`**`>`**`index.js`
 
