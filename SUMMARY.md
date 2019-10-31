@@ -5,8 +5,8 @@
 * [Run and... Hello world!](hello-world.md)
 * [Configure development environment](configure-development-environment.md)
 * [How ReactJS works](how-reactjs-works.md)
-* [Creating Components](components.md)
-* [Handling States](states.md)
-* [Adding Styles](styles.md)
+* [Todolist - Creating Components](components.md)
+* [Todolist - Handling States](states.md)
+* [Todolist - Adding Styles](styles.md)
 * [References](references.md)
 

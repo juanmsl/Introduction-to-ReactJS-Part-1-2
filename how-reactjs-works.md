@@ -186,9 +186,270 @@ In the example above, we create two different buttons, with the same component. 
 
 ## Components lifecycle and features
 
+Create functional component are great, but they cant provide me more complex context for a component, for example grid of projects requested to an API, how can I add behavior to my component, or how can I add a state so that the component depends on it, continue with the example, if component state don't have projects, the component should render a message that there are not projects available, and is component state have projects, show the projects in a grid and a filter bar.
+
+To use a complex component, we can use a class that extends the Component of React, it inherit all methods and implements the lifecycle of a component in ReactJS.
+
+```javascript
+import React from 'react';
+
+class ProjectsGrid extends React.Component {
+
+}
+
+export default ProjectsGrid;
+```
+
+First of all we create a class that **`extends`** the **React `Component`**, to use the lifecycle React component, after that we need to implement the **`render`** method, that will return the JSX, of the component.
+
+{% code-tabs %}
+{% code-tabs-item title="class" %}
+```javascript
+import React from 'react';
+
+class ProjectsGrid extends React.Component {
+    render() {
+        return (
+            <section>Im a projects grid to {this.props.name}</section>
+        );
+    }
+}
+
+export default ProjectsGrid;
+```
+{% endcode-tabs-item %}
+
+{% code-tabs-item title="function" %}
+```javascript
+import React from 'react';
+
+const ProjectsGrid = (props) => (
+    <section>Im a projects grid to {props.name}</section>
+);
+
+export default ProjectsGrid;
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+By the moment our component don't have a state and a big complexity, so its not too different from a functional component, as you can see in the code above, there are the same component written as a class and as a function.
+
+Now we gonna add it a state to our component, so we'll continue with our component as a class, because with a functional component \(without hooks\) we can't handle a component state. For that we need to specify a **`constructor`** in the class, and there will be we gonna define our state. The component state should a dictionary as JSON, and you can specify any number of items you want.
+
+```javascript
+import React from 'react';
+
+class ProjectsGrid extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: []
+        };
+    }
+
+    render() {
+        return (
+            <section>Im a projects grid to {this.props.name}</section>
+        );
+    }
+}
+
+export default ProjectsGrid;
+```
+
+Now that we have a state in our component, and we know that the component depends on his state, when his state change, the component will re-render. 
+
+We gonna use a method of the lifecycle of the React Component, **`componentDidMount`** only execute after first render of the component, so we gonna use it to fetch the projects.
+
+{% hint style="info" %}
+[React lifecycle methods diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+{% endhint %}
+
+```javascript
+import React from 'react';
+
+class ProjectsGrid extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: [],
+            message: "There are not projects"
+        };
+    }
+    
+    componentDidMount() {
+        fetch("https://api.url/projects")
+            .then((response) => {
+                const data = response.json();
+                this.setState({
+                    projects: data
+                });
+            })
+            .catch(function(error) {
+                this.setState({
+                    error: "Error: " + error.message
+                });
+            });
+    }
+
+    render() {
+        return (
+            <section>Im a projects grid to {this.props.name}</section>
+        );
+    }
+}
+
+export default ProjectsGrid;
+```
+
+As you can see in the example above, you can only **set the state in the constructor,** after that, you **can not modify the state directly**, to update it, you use the method **`setState`** inherit from the **React Component** class. Its not necessary to send all state again in **`setState`** method, only specify the keys that will change; when you call **`setState`**, the method will re-render, because the state change.
+
+{% hint style="info" %}
+[React Component State and Lifecycle](https://en.reactjs.org/docs/state-and-lifecycle.html)
+{% endhint %}
+
+Now we gonna render the projects grid depends on the state, as we describe at the beginning of the example.
+
+```javascript
+import React from 'react';
+
+class ProjectsGrid extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: [],
+            message: "There are not projects"
+        };
+    }
+    
+    componentDidMount() {
+        fetch("https://api.url/projects")
+            .then((response) => {
+                const data = response.json();
+                this.setState({
+                    projects: data
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    error: "Error: " + error.message
+                });
+            });
+    }
+
+    render() {
+        if(this.state.projects.lenght > 0) {
+            return null; // Return projects grid
+        } else {
+            return (
+                <section>
+                    <p>{this.state.message}</p>
+                </section>
+            );
+        }
+    }
+}
+
+export default ProjectsGrid;
+```
+
+Now if there are no projects, it will show the message **`"There are not projects"`**, and if the fetch result cause an error, the error will be the error message. But if there are projects to show, render the projects grid.
+
+To render a list we need to **`map`** each item to a **`JSX`** element, and each element need as parameter a unique key.
+
+{% hint style="info" %}
+[Map function documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+{% endhint %}
+
+```javascript
+import React from 'react';
+import Project from './project';
+
+class ProjectsGrid extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            projects: [],
+            message: "There are not projects"
+        };
+    }
+    
+    componentDidMount() {
+        fetch("https://api.url/projects")
+            .then((response) => {
+                const data = response.json();
+                this.setState({
+                    projects: data
+                });
+            })
+            .catch((error) => {
+                this.setState({
+                    error: "Error: " + error.message
+                });
+            });
+    }
+    
+    renderProjects = () => {
+        return this.projects.map((project, i) => {
+            return (
+                <Project
+                    key={i}
+                    name={project.name}
+                    cost={project.cost}
+                />
+            );
+        });
+    }
+
+    render() {
+        if(this.state.projects.lenght > 0) {
+            return this.renderProjects();
+        } else {
+            return (
+                <section>
+                    <p>{this.state.message}</p>
+                </section>
+            );
+        }
+    }
+}
+
+export default ProjectsGrid;
+
+```
+
+Lets go for parts...
+
+In **`line 2`** I import the Project component, to render a specific project
+
+In **`lines 28-38`** I create a method in class **`ProjectsGrid`** to render my projects list
+
+In **`line 29`**, pass to map function, a function that receive the **`current item`** of the list, and the **`index`** of that item in the list, this to use that index as unique **`key`** for the project in **`line 32`**.
+
+In **`line 42`** I call the method **`renderProjects`** to render my projects.
+
+{% hint style="info" %}
+[More about React component](https://en.reactjs.org/docs/react-component.html)
+{% endhint %}
+
+And thats it, we have created a complex component, that haven't project, but when it render himself at the first time, it fetch the projects to an API, and then render those projects, to use a class component is the same thing as functional component.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ProjectsGrid from './projectsGrid';
+
+ReactDOM.render(
+  <ProjectsGrid />,
+  document.getElementById('root')
+);
+```
+
 ## Babel
 
+To work I use Babel to help with Javascript to use the functionalities that ECMAScript provides me, off course you can use typescript if you want, but for this guide I'll use Babel.
 
-
-
+{% hint style="info" %}
+Read more about [Babel](https://babeljs.io/) or [TypeScript](https://www.typescriptlang.org/)
+{% endhint %}
 
