@@ -368,6 +368,32 @@ If there are not any group selected, the button to delete the current group shou
 
 ### Prop functions
 
+Now its time to use those functions that we receive as props, those functions will be called when the user clicks on the buttons, so, we should use the **`onClick`** event in the buttons. As the events need a function that receive the event as parameter, the function that receiver params, as **`addGroup(name)`** for example, we need to use it on a local function that receive the event only.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/index.js" %}
+```javascript
+...
+  addGroup = (e) => {
+    e.preventDefault();
+    const {inputValue} = this.state;
+
+    if(inputValue === "") return;
+
+    this.props.addGroup(inputValue);
+    this.setState({inputValue: ""});
+  };
+...
+  const {deleteGroups, deleteSelectedGroup} = this.props;
+...
+  <button onClick={this.addGroup} disabled={isDisableAddButton}>Add</button>
+  <button onClick={deleteGroups} disabled={isDisableDeleteAllButton}>Delete all</button>
+  <button onClick={deleteSelectedGroup} disabled={isDisableDeleteButton}>Delete Group</button>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ### Item onClick
 
 ### Final component file
