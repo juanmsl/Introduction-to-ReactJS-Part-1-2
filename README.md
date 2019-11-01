@@ -10,7 +10,7 @@ First of all I think it's important to clarify that ReactJS is not a Framework a
 [Differences between Library and Framework](https://www.freecodecamp.org/news/the-difference-between-a-framework-and-a-library-bd133054023f/)
 {% endhint %}
 
-To getting started with React we gonna use the documentation of [create-react-app](https://create-react-app.dev/docs/getting-started) to create, get up and run a new project with ReactJS.
+To getting started with React we are going to use the documentation of [create-react-app](https://create-react-app.dev/docs/getting-started) to create, get up and run a new project with ReactJS.
 
 > I suggest to create a repository on [Github](https://github.com/) on any service that allows you versioning your code.
 

@@ -108,7 +108,7 @@ A robots.txt file tells search engine crawlers which pages or files the crawler 
 {% endtab %}
 
 {% tab title="src" %}
-Where you can found your dynamic files, if the file is imported by your JavaScript application or changes contents, put it here.
+Where you can find your dynamic files, if the file is imported by your JavaScript application or changes contents, put it here.
 
 #### index.js
 
