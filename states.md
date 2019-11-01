@@ -314,7 +314,57 @@ export default class TodolistApp extends React.Component {
 
 ### Input value
 
+Handle the state for this component is easier than the main component, as it only have the **`input value`** on his state. Now as we pass to the input as value the state, we need to update the state when the input changes, so we'll use the event **`onChange`** over the input.
+
+{% hint style="info" %}
+We use controlled components to handle form inputs, if you want read the next articles to understand more about [controlled components](https://en.reactjs.org/docs/forms.html#controlled-components) and [uncontrolled components](https://en.reactjs.org/docs/uncontrolled-components.html).
+{% endhint %}
+
+As the events in components needs as callback a function that receive the event, we need to create that function before specify the **`onChange`** event over the input.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/index.js" %}
+```javascript
+...
+  handleInput = (e) => {
+    e.preventDefault();
+    const {value} = e.target;
+    this.setState({
+      inputValue: value
+    });
+  };
+...
+  <input type="text" value={inputValue} onChange={this.handleInput} />
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ### Enable/disable buttons
+
+Now to enable and disable buttons depends on the state of the main component, so we need to define when each button is disable.
+
+If the input value is empty, the add button should be disabled.
+
+If there are not groups, the delete all groups button should be disabled.
+
+If there are not any group selected, the button to delete the current group should be disabled.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/index.js" %}
+```javascript
+...
+  const isDisableAddButton = inputValue === "";
+  const isDisableDeleteAllButton = groups.length === 0;
+  const isDisableDeleteButton = selectedGroup === undefined;
+...
+  <button disabled={isDisableAddButton}>Add</button>
+  <button disabled={isDisableDeleteAllButton}>Delete all</button>
+  <button disabled={isDisableDeleteButton}>Delete Group</button>
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 ### Prop functions
 
