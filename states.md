@@ -396,5 +396,243 @@ Now its time to use those functions that we receive as props, those functions wi
 
 ### Item onClick
 
+Now if the user click any group, that group will be check as selected, so we need to specify the **`onClick`** event in each _**group item**_ to select that group.
+
+So in the method that render each item, add the onClick prop.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/index.js" %}
+```javascript
+...
+  renderGroups = () => {
+    const { groups, selectGroup} = this.props;
+
+    return groups.map((group, i) => (
+      <Item
+        key={i}
+        onClick={() => selectGroup(i)}
+        {...group}
+      />
+    ));
+  };
+...
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+And in the item group component we need to receive the prop **`onClick`** and add it to the component.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/item/index.js" %}
+```javascript
+import React from 'react';
+
+export default function Item(props) {
+  const { name, tasks, onClick } = props;
+
+  const getDoneTaskCount = () => (
+    tasks.filter((task) => task.done).length
+  );
+
+  return (
+    <section onClick={onClick}>
+      <span>{name}</span>
+      <span>{getDoneTaskCount()}/{tasks.length}</span>
+    </section>
+  );
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
 ### Final component file
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/groupList/index.js" %}
+```javascript
+import React from 'react';
+import Item from "./item";
+
+export default class GroupList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
+  }
+
+  static defaultProps = {
+    groups: []
+  };
+
+  
+  renderGroups = () => {
+    const { groups, selectGroup} = this.props;
+
+    return groups.map((group, i) => (
+      <Item
+        key={i}
+        onClick={() => selectGroup(i)}
+        {...group}
+      />
+    ));
+  };
+
+  handleInput = (e) => {
+    e.preventDefault();
+    const {value} = e.target;
+    this.setState({
+      inputValue: value
+    });
+  };
+
+  addGroup = (e) => {
+    e.preventDefault();
+    const {inputValue} = this.state;
+
+    if(inputValue === "") return;
+
+    this.props.addGroup(inputValue);
+    this.setState({inputValue: ""});
+  };
+
+  render() {
+    const { title, description, groups, selectedGroup, deleteGroups, deleteSelectedGroup} = this.props;
+    const {inputValue} = this.state;
+
+    const isDisableAddButton = inputValue === "";
+    const isDisableDeleteAllButton = groups.length === 0;
+    const isDisableDeleteButton = selectedGroup === undefined;
+    
+    return (
+      <form onSubmit={this.addGroup}>
+        <section>
+          <h1>{title}</h1>
+          <p>{description}</p>
+          <input type="text" value={inputValue} onChange={this.handleInput} />
+          <section>
+            <button onClick={this.addGroup} disabled={isDisableAddButton}>Add</button>
+            <button onClick={deleteGroups} disabled={isDisableDeleteAllButton}>Delete all</button>
+          </section>
+        </section>
+        <section>
+          {this.renderGroups()}
+        </section>
+        <button onClick={deleteSelectedGroup} disabled={isDisableDeleteButton}>Delete Group</button>
+      </form>
+    );
+  } 
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## TaskList component
+
+As we do with GroupList component, do the same with this component respectively.
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/taskList/index.js" %}
+```javascript
+import React from 'react';
+import Item from "./item";
+
+export default class TaskList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ""
+    };
+  }
+
+  static defaultProps = {
+    tasks: []
+  }
+
+  renderTasks = () => {
+    const { group, toggleDoneTask} = this.props;
+    return group.tasks.map((task, i) => (
+      <Item
+        key={i}
+        {...task}
+        onClick={() => toggleDoneTask(i)}
+      />
+    ));
+  };
+
+  handleInput = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState({
+      inputValue: value
+    });
+  };
+
+  addTask = (e) => {
+    e.preventDefault();
+    const { inputValue } = this.state;
+
+    if (inputValue === "") return;
+
+    this.props.addTask(inputValue);
+    this.setState({ inputValue: "" });
+  };
+
+  render() {
+    const {group, deleteTasks} = this.props;
+    const {inputValue} = this.state;
+
+    if (!group) {
+      return (
+        <section>
+          <p>No project selected</p>
+        </section>
+      );
+    }
+
+    const isDisableAddButton = inputValue === "";
+    const isDisableDeleteAllButton = group.tasks.length === 0;
+  
+    return (
+      <form>
+        <section>
+          <h2>{group.name}</h2>
+          <section>
+            <input type="text" value={inputValue} onChange={this.handleInput} />
+            <button onClick={this.addTask} disabled={isDisableAddButton}>Add</button>
+            <button onClick={deleteTasks} disabled={isDisableDeleteAllButton}>Delete all</button>
+          </section>
+        </section>
+        <section>
+          {this.renderTasks()}
+        </section>
+      </form>
+    );
+  }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+{% code-tabs %}
+{% code-tabs-item title="src/components/taskList/item/index.js" %}
+```javascript
+import React from 'react';
+
+export default function Item(props) {
+  const { text, onClick } = props;
+
+  return (
+    <section onClick={onClick}>
+      {text}
+    </section>
+  );
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+## Result
+
+Now feel free to test your **TodolistApp**, add some groups, and add tasks to them, you have finished the functionality of your app, now the only thing that is missing, are the styles, so lets finish with that.
 
