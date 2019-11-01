@@ -120,7 +120,7 @@ export default class GroupList extends React.Component {
     };
   }
 
-  defaultProps = {
+  static defaultProps = {
     groups: []
   };
 
@@ -244,7 +244,7 @@ In **`line 7`** I use function **`filter`** to get the number of how many task a
 import React from 'react';
 
 export default function Item(props) {
-  const { text, tasks } = props;
+  const { name, tasks } = props;
 
   const getDoneTaskCount = () => (
     tasks.filter((task) => task.done).length
@@ -252,7 +252,7 @@ export default function Item(props) {
 
   return (
     <section>
-      <span>{text}</span>
+      <span>{name}</span>
       <span>{getDoneTaskCount()}/{tasks.length}</span>
     </section>
   );
@@ -288,7 +288,7 @@ export default class TaskList extends React.Component {
     };
   }
 
-  defaultProps = {
+  static defaultProps = {
     tasks: []
   }
 
@@ -317,7 +317,7 @@ export default class TaskList extends React.Component {
     return (
       <form>
         <section>
-          <h2>{group.text}</h2>
+          <h2>{group.name}</h2>
           <section>
             <input type="text" value={inputValue} />
             <button>Add</button>
@@ -383,7 +383,7 @@ replace the state with
 ```javascript
 this.state = {
   groups: [{
-    text: "React",
+    name: "React",
     tasks: [
       {text: "components", done: false},
       {text: "functions", done: true}
