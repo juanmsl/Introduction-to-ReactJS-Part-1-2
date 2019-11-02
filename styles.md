@@ -180,9 +180,5 @@ Now you have your first React App, feel free to test it, to modify it, to explor
 
 ReactJS have a lot of thing you can use to improve your frontend skills.
 
-### Things you can search now
-
-React router
-
 
 
