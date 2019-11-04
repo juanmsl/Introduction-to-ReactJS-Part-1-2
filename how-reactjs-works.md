@@ -287,7 +287,7 @@ class ProjectsGrid extends React.Component {
             })
             .catch(function(error) {
                 this.setState({
-                    error: "Error: " + error.message
+                    message: "Error: " + error.message
                 });
             });
     }
@@ -332,7 +332,7 @@ class ProjectsGrid extends React.Component {
             })
             .catch((error) => {
                 this.setState({
-                    error: "Error: " + error.message
+                    message: "Error: " + error.message
                 });
             });
     }
@@ -384,13 +384,13 @@ class ProjectsGrid extends React.Component {
             })
             .catch((error) => {
                 this.setState({
-                    error: "Error: " + error.message
+                    message: "Error: " + error.message
                 });
             });
     }
     
     renderProjects = () => {
-        return this.projects.map((project, i) => {
+        return this.state.projects.map((project, i) => {
             return (
                 <Project
                     key={i}
