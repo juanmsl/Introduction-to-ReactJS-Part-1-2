@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction to ReactJ](README.md)
+* [Introduction to ReactJS - Part 1/2](README.md)
 * [Project creation](project-creation.md)
 * [Run and... Hello world!](hello-world.md)
 * [Configure development environment](configure-development-environment.md)

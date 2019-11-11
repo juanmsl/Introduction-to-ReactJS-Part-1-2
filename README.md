@@ -1,4 +1,4 @@
-# Introduction to ReactJ
+# Introduction to ReactJS - Part 1/2
 
 ## Getting Started
 

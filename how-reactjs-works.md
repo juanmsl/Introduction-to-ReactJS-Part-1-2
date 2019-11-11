@@ -101,8 +101,8 @@ You can declare variables that have **`JSX`** as value, as the example above in 
 
 You create a component in declaring it in a function, or a class
 
-{% code-tabs %}
-{% code-tabs-item title="src/button/index.js" %}
+{% tabs %}
+{% tab title="src/button/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -116,9 +116,9 @@ const Button = () => (
 
 export default Button;
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="src/index.js" %}
+{% tab title="src/index.js" %}
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -129,15 +129,15 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Yeah, that its great, but if I want a dynamic button?
 
 You use the props of the component, the props are the properties that you pass to the component  when you use it, as similar as attributes in an HTML tag. And the component receive that properties as a dictionary.
 
-{% code-tabs %}
-{% code-tabs-item title="src/button/index.js" %}
+{% tabs %}
+{% tab title="src/button/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -151,9 +151,9 @@ const Button = (props) => (
 
 export default Button;
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="src/index.js" %}
+{% tab title="src/index.js" %}
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -179,8 +179,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 In the example above, we create two different buttons, with the same component. So you can define props for your component to receive data that you want to show.
 
@@ -202,8 +202,8 @@ export default ProjectsGrid;
 
 First of all we create a class that **`extends`** the **React `Component`**, to use the lifecycle React component, after that we need to implement the **`render`** method, that will return the JSX, of the component.
 
-{% code-tabs %}
-{% code-tabs-item title="class" %}
+{% tabs %}
+{% tab title="class" %}
 ```javascript
 import React from 'react';
 
@@ -217,9 +217,9 @@ class ProjectsGrid extends React.Component {
 
 export default ProjectsGrid;
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="function" %}
+{% tab title="function" %}
 ```javascript
 import React from 'react';
 
@@ -229,8 +229,8 @@ const ProjectsGrid = (props) => (
 
 export default ProjectsGrid;
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 By the moment our component don't have a state and a big complexity, so its not too different from a functional component, as you can see in the code above, there are the same component written as a class and as a function.
 

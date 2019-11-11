@@ -12,8 +12,8 @@ First of all, I will add the file **`jsconfig.json`** in the **root folder of my
 [Reference about `jsconfig.json`](https://code.visualstudio.com/docs/languages/jsconfig)\`\`
 {% endhint %}
 
-{% code-tabs %}
-{% code-tabs-item title="jsconfig.json" %}
+{% tabs %}
+{% tab title="jsconfig.json" %}
 ```javascript
 {
   "compilerOptions": {
@@ -25,8 +25,8 @@ First of all, I will add the file **`jsconfig.json`** in the **root folder of my
   "include": ["src/*"]
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## **`src`** file structure
 
@@ -56,15 +56,15 @@ After create that folders, I'll move the **`serviceWorker.js`** file into a fold
 
 After that we gonna export the **`ServiceWorker`** from **`common`** folder, to add it in the scope of **`common`** folder.
 
-{% code-tabs %}
-{% code-tabs-item title="src/common/index.js" %}
+{% tabs %}
+{% tab title="src/common/index.js" %}
 ```javascript
 import * as ServiceWorker from './serviceWorker';
 
 export {ServiceWorker};
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Main App file
 
@@ -72,8 +72,8 @@ Now we gonna create the root component of our **Todolist** app, so in **`src/mod
 
 > I'll explain what is a component, the methods that a component have and the lifecycle of them, in the next page. By the moment we are only creating the base structure to start to work.
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -88,15 +88,15 @@ export default class TodolistApp extends React.Component {
   }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Render Todolist App
 
 Now to finish, we gonna render our App to the DOM. So in the main **`index.js`** file, in the root of **`src`** folder, we gonna import the root component of our app, and render it.
 
-{% code-tabs %}
-{% code-tabs-item title="src/index.js" %}
+{% tabs %}
+{% tab title="src/index.js" %}
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -112,8 +112,8 @@ ReactDOM.render(
 
 ServiceWorker.register();
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Todolist App, ready to work!
 

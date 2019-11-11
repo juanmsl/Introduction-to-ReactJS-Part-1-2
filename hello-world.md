@@ -26,8 +26,8 @@ Now lets try something...
 
 Open your App folder in your Text editor or IDE of your preference and open the file **`src/App.js`** it should look something like this
 
-{% code-tabs %}
-{% code-tabs-item title="src/App.js" %}
+{% tabs %}
+{% tab title="src/App.js" %}
 ```javascript
 import React from 'react';
 import logo from './logo.svg';
@@ -56,8 +56,8 @@ function App() {
 
 export default App;
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Edit the _`line 11`_, and write
 
@@ -77,8 +77,8 @@ Something like this
 
 And remove **`<a>`** tag that is between _`lines 13-20`_; the final code should be something like this
 
-{% code-tabs %}
-{% code-tabs-item title="srs/App.js" %}
+{% tabs %}
+{% tab title="srs/App.js" %}
 ```javascript
 import React from 'react';
 import logo from './logo.svg';
@@ -99,8 +99,8 @@ function App() {
 
 export default App;
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 If you do this correctly, you will see how after you saved the file, the app in the web browser refresh automatically and appears with the change you did
 

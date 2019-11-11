@@ -20,20 +20,20 @@ After install it, restart the development server.
 
 ## Class names
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```java
 ...
   <main className="todolist-app">
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 In the next code, we are passing another prop that its boolean, if the current group is selected or not.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 ...
   renderGroups = () => {
@@ -68,11 +68,11 @@ In the next code, we are passing another prop that its boolean, if the current g
   );
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -91,11 +91,11 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/index.js" %}
 ```javascript
 ...
   render() {
@@ -131,11 +131,11 @@ export default function Item(props) {
   }
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -149,8 +149,8 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Styles
 
@@ -164,15 +164,15 @@ The src folder should look like this
 
 Now to use the styles, you must **import** them where you want to use them, as I created a global styles independent from the components, I should import styles just 1 time, but if you want to create styles per component, you can create an CSS or SCSS file inside each component folder and import the respective file.
 
-{% code-tabs %}
-{% code-tabs-item title="src/index.js" %}
+{% tabs %}
+{% tab title="src/index.js" %}
 ```javascript
 ...
 import 'scss/styles.scss';
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## WE FINIIIISH!!!
 

@@ -8,8 +8,8 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
 
 ### addGroup
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   addGroup = (name) => {
@@ -24,13 +24,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   }
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### deleteSelectedGroup
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   deleteSelectedGroup = () => {
@@ -43,13 +43,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   }
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### deleteGroups
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   deleteGroups = () => {
@@ -60,13 +60,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   }
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### addTask
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   addTask = (text) => {
@@ -84,13 +84,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   };
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### deleteTasks
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   deleteTasks = () => {
@@ -104,13 +104,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   }
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### selectGroup
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   selectGroup = (index) => {
@@ -120,13 +120,13 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   };
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### toggleDoneTask
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   toggleDoneTask = (taskIndex) => {
@@ -141,8 +141,8 @@ The sate of the main component, have the **`list of groups`** and the **`selecte
   };
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Render method
 
@@ -154,8 +154,8 @@ As we know which of these functions should use the **`GroupList`** component?
 
 That component _**create**_ groups and _**delete**_ them, further more, can _**select**_ a group to show his tasks, so we should pass him the functions that allow do that. Also, if we want to enable/disable buttons and add an style to the selected group, the component should know _**which group is selected**_.
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   <GroupList
@@ -170,15 +170,15 @@ That component _**create**_ groups and _**delete**_ them, further more, can _**s
   />
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### TaskList
 
 Now, following the same logic we need to send to the component the function that should use.
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 ...
   <TaskList
@@ -189,13 +189,13 @@ Now, following the same logic we need to send to the component the function that
   />
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Final component file
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 import React from 'react';
 import {
@@ -307,8 +307,8 @@ export default class TodolistApp extends React.Component {
   }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## GroupList component
 
@@ -322,8 +322,8 @@ We use controlled components to handle form inputs, if you want read the next ar
 
 As the events in components needs as callback a function that receive the event, we need to create that function before specify the **`onChange`** event over the input.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 ...
   handleInput = (e) => {
@@ -337,8 +337,8 @@ As the events in components needs as callback a function that receive the event,
   <input type="text" value={inputValue} onChange={this.handleInput} />
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Enable/disable buttons
 
@@ -350,8 +350,8 @@ If there are not groups, the delete all groups button should be disabled.
 
 If there are not any group selected, the button to delete the current group should be disabled.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 ...
   const isDisableAddButton = inputValue === "";
@@ -363,15 +363,15 @@ If there are not any group selected, the button to delete the current group shou
   <button disabled={isDisableDeleteButton}>Delete Group</button>
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Prop functions
 
 Now its time to use those functions that we receive as props, those functions will be called when the user clicks on the buttons, so, we should use the **`onClick`** event in the buttons. As the events need a function that receive the event as parameter, the function that receiver params, as **`addGroup(name)`** for example, we need to use it on a local function that receive the event only.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 ...
   addGroup = (e) => {
@@ -391,8 +391,8 @@ Now its time to use those functions that we receive as props, those functions wi
   <button onClick={deleteSelectedGroup} disabled={isDisableDeleteButton}>Delete Group</button>
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Item onClick
 
@@ -400,8 +400,8 @@ Now if the user click any group, that group will be check as selected, so we nee
 
 So in the method that render each item, add the onClick prop.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 ...
   renderGroups = () => {
@@ -417,13 +417,13 @@ So in the method that render each item, add the onClick prop.
   };
 ...
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 And in the item group component we need to receive the prop **`onClick`** and add it to the component.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -442,13 +442,13 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Final component file
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 import React from 'react';
 import Item from "./item";
@@ -524,15 +524,15 @@ export default class GroupList extends React.Component {
   } 
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## TaskList component
 
 As we do with GroupList component, do the same with this component respectively.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/index.js" %}
 ```javascript
 import React from 'react';
 import Item from "./item";
@@ -611,11 +611,11 @@ export default class TaskList extends React.Component {
   }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -629,8 +629,8 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Result
 

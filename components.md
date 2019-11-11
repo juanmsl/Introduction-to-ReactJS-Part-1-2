@@ -28,8 +28,8 @@ We can define how the **group list format** will be, to be easier the management
 
 And each **task list element** as dictionary with the **text** of the task, and a boolean if the task is **done** or not.
 
-{% code-tabs %}
-{% code-tabs-item title="groups state format" %}
+{% tabs %}
+{% tab title="groups state format" %}
 ```javascript
 groups = [
     {
@@ -43,15 +43,15 @@ groups = [
     }
 ]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Task list component
 
 By the moment the task list component only need the selected group to show.
 
-{% code-tabs %}
-{% code-tabs-item title="src/modules/index.js" %}
+{% tabs %}
+{% tab title="src/modules/index.js" %}
 ```javascript
 import React from 'react';
 import {
@@ -87,8 +87,8 @@ export default class TodolistApp extends React.Component {
   }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Grouplist component
 
@@ -106,8 +106,8 @@ I can specify a default value for props, with **`defaultProps`** as element of t
 
 In **`lines 16-27`** I define a method to render the group list, for that I map each group list element to a **`Item`** component that I will create next. By default I'll pass all attributes that a group have _**\(name, tasks\)**_ to the Item component as **`props`** to render it.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/index.js" %}
 ```javascript
 import React from 'react';
 import Item from "./item";
@@ -159,13 +159,13 @@ export default class GroupList extends React.Component {
   } 
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 As you can see in **`line 23`**, I destructuring the group dictionary, I mean, the following two examples _**\(destructuring and normal\)**_, pass the same props to the component...
 
-{% code-tabs %}
-{% code-tabs-item title="destructuring" %}
+{% tabs %}
+{% tab title="destructuring" %}
 ```javascript
 const group = {
     name: "name",
@@ -176,9 +176,9 @@ const group = {
     {...group}
 />
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="normal" %}
+{% tab title="normal" %}
 ```javascript
 const group = {
     name: "name",
@@ -190,13 +190,13 @@ const group = {
     tasks={group.tasks}
 />
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Also, in **`line 17`**, I destructuring too
 
-{% code-tabs %}
-{% code-tabs-item title="destructuring" %}
+{% tabs %}
+{% tab title="destructuring" %}
 ```javascript
 const props = {
     groups: [],
@@ -207,9 +207,9 @@ const props = {
 const {groups, description} = props;
 console.log(groups, description);
 ```
-{% endcode-tabs-item %}
+{% endtab %}
 
-{% code-tabs-item title="normal" %}
+{% tab title="normal" %}
 ```javascript
 const props = {
     groups: [],
@@ -219,8 +219,8 @@ const props = {
 
 console.log(props.groups, props.description);
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 [Read more about destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
@@ -238,8 +238,8 @@ In **`line 7`** I use function **`filter`** to get the number of how many task a
 [Read more about Filter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 {% endhint %}
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/groupList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/groupList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -258,8 +258,8 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Tasklist component
 
@@ -273,8 +273,8 @@ Create the component in
 
 In **`lines 16-24`** I define a method to render the task list, for that I map each task list element to a **`Item`** component that I will create next. By default I'll pass all attributes that a task have _**\(text, done\)**_ to the Item component as **`props`** to render it.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/index.js" %}
 ```javascript
 import React from 'react';
 import Item from "./item";
@@ -332,8 +332,8 @@ export default class TaskList extends React.Component {
   }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Task list item component
 
@@ -341,8 +341,8 @@ export default class TaskList extends React.Component {
 
 As the item component will not have state, I can create it as functional component that only return a component base on his props.
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/taskList/item/index.js" %}
+{% tabs %}
+{% tab title="src/components/taskList/item/index.js" %}
 ```javascript
 import React from 'react';
 
@@ -356,21 +356,21 @@ export default function Item(props) {
   );
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Export in components folder
 
 To finish, I'll export the components from **`src/components/index.js`**
 
-{% code-tabs %}
-{% code-tabs-item title="src/components/index.js" %}
+{% tabs %}
+{% tab title="src/components/index.js" %}
 ```javascript
 export { default as GroupList } from './groupList';
 export { default as TaskList } from './taskList';
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## See the result
 
